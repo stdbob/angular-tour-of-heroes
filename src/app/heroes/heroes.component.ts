@@ -36,6 +36,8 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();//While you could call getHeroes() in the constructor, that's not the best practice.
+      this.heroService.getHeroes()
+          .subscribe(heroes => this.heroes = heroes);
+    //While you could call getHeroes() in the constructor, that's not the best practice.
   }
 }
