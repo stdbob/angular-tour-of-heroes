@@ -9,8 +9,9 @@ import {HEROES} from '../mock-heroes';
 })
 export class HeroesComponent {
   heroes = HEROES;
-  hero: Hero = {
-    id: 1,
-    name: 'Windstorm'
-  };
+  selectedHero?: Hero;
+
+  onSelect(_t5: Hero) {
+    this.selectedHero = _t5;
+  }
 }
