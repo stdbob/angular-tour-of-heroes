@@ -9,6 +9,7 @@ import {Hero} from '../hero';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -18,14 +19,14 @@ import { MessageService } from '../message.service';
   imports: [
     FormsModule,
     NgFor,
-    HeroDetailComponent
+    HeroDetailComponent,
+    RouterLink
   ],
 })
 
 export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
-  selectedHero?: Hero;
-
+  
   constructor(private heroService: HeroService, private messageService: MessageService) {} //Reserve the constructor for minimal initialization such as wiring constructor parameters to properties. 
   
   ngOnInit(): void {
@@ -33,7 +34,6 @@ export class HeroesComponent implements OnInit {
   }
 
   onSelect(hero: Hero): void {
-    this.selectedHero = hero;
     this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
   }
 
